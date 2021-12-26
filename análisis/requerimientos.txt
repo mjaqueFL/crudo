@@ -1,0 +1,20 @@
+Estructuración de Tareas, Acciones y Sueños (ETAyS)
+
+ETAyS es una aplicación CRUD que gestiona los siguientes elementos:
+
+TAREA: Algo que tenemos que hacer.
+  - id. identificador único de la tarea.
+  - titulo. Texto corto que describe la tarea.
+  - descripcion. Texto largo que detalla la tarea.
+  - fechaObjetivo. Fecha en la que debemos/queremos tener la tarea terminada.
+  - fechaFin. Fecha de finalización de la tarea.
+  - estado. Estado actual de la tarea. Puede ser: Propuesta, Aceptada, En Curso, Suspendida, Terminada o Cancelada.
+
+REQUERIMIENTOS
+Versión 1.0
+  - Alta de tarea.
+  - Listado de tareas.
+  - Eliminación de tarea
+  - Consulta de tarea.
+  - Edición de tarea.
+  - Búsqueda de tarea.
