@@ -11,12 +11,13 @@
 
 import {Vista} from './vista.js'
 import {Menu} from './menu.js'
+import {VistaCrear} from './vistacrear.js'
 
 export class VistaPrincipal extends Vista{
 	/**
 		Constructor de la vista principal.
 		Declara a inicializa los atributos del objeto.
-		@param controlador {Etays} Controlador de la aplicación.
+		@param controlador {Crudo} Controlador de la aplicación.
 		@param base {HTMLElement} Elemento HTML en el que se creará la vista principal.
 	*/
 	constructor(controlador, base){
@@ -54,7 +55,22 @@ export class VistaPrincipal extends Vista{
 	crearHijos(){
 		//Subvistas. No se cargan hasta tener registradas las referencias a la plantilla.
 		this.hijos = {
-			'menu' : new Menu(this.controlador, this.html.nav)
+			'menu' : new Menu(this.controlador, this.html.nav),
+			'vistaCrear': new VistaCrear(this.controlador, this.html.main)
 		}
+	}
+	/**
+	Muestra el formulario para dar de alta un nuevo Objetivo.
+	*/
+	verCrear(){
+		this.ocultarSubvistasMain()
+		this.hijos.crear.mostrar()
+	}
+	/**
+	Oculta las subvistas de main
+	*/
+	ocultarSubvistasMain(){
+		//Añadir el resto de subvistas de main
+		this.hijos.vistaCrear.ocultar()
 	}
 }

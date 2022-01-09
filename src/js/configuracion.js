@@ -5,6 +5,8 @@
 */
 
 export let configuracion = {
-	'dirHTML': 'html',
-	'dirCSS': 'css'
+	dirHTML: 'html',
+	dirCSS: 'css',
+	bdNombre: 'baseDatos',
+	bdVersion: 1
 }

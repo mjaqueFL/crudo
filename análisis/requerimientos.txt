@@ -1,20 +1,21 @@
-Estructuración de Tareas, Acciones y Sueños (ETAyS)
+CRUDO - Create, Read, Update, Delete, Others...
 
-ETAyS es una aplicación CRUD que gestiona los siguientes elementos:
+CRUDO es un CRUD que gestiona elementos de tipo Clase:
 
-TAREA: Algo que tenemos que hacer.
-  - id. identificador único de la tarea.
-  - titulo. Texto corto que describe la tarea.
-  - descripcion. Texto largo que detalla la tarea.
-  - fechaObjetivo. Fecha en la que debemos/queremos tener la tarea terminada.
-  - fechaFin. Fecha de finalización de la tarea.
-  - estado. Estado actual de la tarea. Puede ser: Propuesta, Aceptada, En Curso, Suspendida, Terminada o Cancelada.
+Clase:
+  - id. identificador único del objeto.
+  - nombre. Texto corto.
+  - descripcion. Texto largo.
+  - fecha. Fecha.
+  - estado. Valor enumerado.
+  - booleano.
+  - imagen.
 
 REQUERIMIENTOS
 Versión 1.0
-  - Alta de tarea.
-  - Listado de tareas.
-  - Eliminación de tarea
-  - Consulta de tarea.
-  - Edición de tarea.
-  - Búsqueda de tarea.
+  - Alta de objetos.
+  - Listado de objetos.
+  - Eliminación de objetos
+  - Consulta de objeto.
+  - Edición de objeto.
+  - Búsqueda de objetos.

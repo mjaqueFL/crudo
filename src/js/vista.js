@@ -11,7 +11,7 @@ export class Vista {
   /**
   	Constructor de la vista.
   	Declara a inicializa los atributos del objeto.
-  	@param controlador {Etays} Controlador de la aplicación.
+  	@param controlador {Crudo} Controlador de la aplicación.
   	@param base {HTMLElement} Elemento HTML en el que se creará la vista principal.
   */
   constructor(controlador, base) {
@@ -43,7 +43,7 @@ export class Vista {
               let doc = parser.parseFromString(texto, "text/html")
               this.registrar(doc)
               this.asociar()
-              this.transferir(base, doc)
+              this.transferir(base, doc.body)	//De lo contrario, cargamos todo el doc (con html, head, body...)
               this.cargarCSS(`${this.dirCSS}/${this.constructor.name.toLowerCase()}.css`)
               this.crearHijos()
 							const promesas = [] //Creamos un array de promesas
@@ -93,8 +93,8 @@ export class Vista {
   @param doc {Document} Documento HTML de la plantilla que contiene los elemenetos a transferir.
   */
   transferir(base, doc) {
-    for (let elemento of doc.children)
-      base.appendChild(elemento)
+    while(doc.children.length > 0)
+      base.appendChild(doc.children.item(0))
   }
 	/**
 	Crea las subvistas de la vista (hijos)

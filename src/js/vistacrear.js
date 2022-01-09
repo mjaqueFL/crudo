@@ -1,18 +1,19 @@
 /**
-	menu.js Menú de la aplicación.
+	vistacrear.js Vista de Formulario para la creación de objetivos.
 	@author Miguel Jaque <mjaque@migueljaque.com>
 	@license GPL-3.0-or-later
 */
 
 /**
-	Menú de operaciones de la aplicación.
+	Vista de Formulario para la creación de objetivos.
 */
 
 import {Vista} from './vista.js'
+import {Clase} from './clase.js'
 
-export class Menu extends Vista{
+export class VistaCrear extends Vista{
 	/**
-		Constructor del menú.
+		Constructor de la vista.
 		Declara a inicializa los atributos del objeto.
 		@param controlador {Crudo} Controlador de la aplicación.
 		@param base {HTMLElement} Elemento HTML en el que se creará la vista principal.
@@ -22,8 +23,8 @@ export class Menu extends Vista{
 
 		//Referencias a Elementos HTML en la plantilla
 		this.html = {
-			'aListar' : null,
-			'aCrear' : null
+			'iNombre' : null,
+			'btnAceptar' : null
 		}
 
 		//Subvistas. No se cargan hasta tener registradas las referencias a la plantilla.
@@ -38,14 +39,30 @@ export class Menu extends Vista{
 	*/
 	registrar(docPlantilla){
 		//Guardamos las referencias a los elementos del interfaz
-		this.html.aListar = docPlantilla.getElementsByTagName('a')[0]
-		this.html.aCrear = docPlantilla.getElementsByTagName('a')[1]
+		this.html.iNombre = docPlantilla.getElementsByTagName('input')[0]
+		this.html.btnAceptar = docPlantilla.getElementsByTagName('button')[0]
 	}
 	/**
 	Asocia los manejadores de eventos a los eventos del documento.
 	**/
 	asociar(){
-		this.html.aListar.onclick = this.controlador.listar.bind(this.controlador)
-		this.html.aCrear.onclick = this.controlador.verCrear.bind(this.controlador)
+		this.html.btnAceptar.onclick = this.aceptar.bind(this)
+	}
+	/**
+	Atención al botón Aceptar
+	*/
+	aceptar(){
+		//Aquí se haría la validación de datos.
+		let nombre = this.html.iNombre.value
+		//Construimos el objeto de negocio
+		let objeto = new Clase(nombre)
+		this.controlador.aceptarCrear(objeto)
+		this.limpiar()
+	}
+	/**
+		Borra los campos del formulario.
+	*/
+	limpiar(){
+		this.html.iNombre = ''
 	}
 }

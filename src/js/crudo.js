@@ -1,6 +1,5 @@
 /**
-	ETAyS - Estructurador de Tareasa, Acciones y Sueños
-	estays.js Controlador principal de la aplicación.
+	crudo.js Controlador principal de la aplicación.
 	@author Miguel Jaque <mjaque@migueljaque.com>
 	@license GPL-3.0-or-later
 */
@@ -9,11 +8,12 @@ import {configuracion} from './configuracion.js'
 import {Modelo} from './modelo.js'
 import {Vista} from './vista.js'
 import {VistaPrincipal} from './vistaprincipal.js'
+import {VistaCrear} from './vistacrear.js'
 
 /**
 	Controlador principal de la aplicación.
 */
-class Etays{
+class Crudo{
 	/**
 		Constructor del controlador.
 		Instancia e inicializa los atributos del objeto.
@@ -21,7 +21,7 @@ class Etays{
 	*/
 	constructor(){
 		this.vistaPrincipal = null	//No podemos iniciar hasta que se complete la carga de window.document
-		this.modelo = new Modelo()
+		this.modelo = new Modelo(configuracion.bdNombre, configuracion.bdVersion)
 
 		//usamos addEventListener para permitir sobrecargar el evento
 		window.addEventListener('load', this.cargar.bind(this))
@@ -45,7 +45,7 @@ class Etays{
 		Inicia la vista principal.
 	*/
 	iniciar(){
-		console.log('Iniciar' + this)
+		console.log('crudo.iniciar')
 	}
 
 	//Atención a Eventos
@@ -53,14 +53,21 @@ class Etays{
 		Atención a la opción de menú "Listar"
 	*/
 	listar(){
-		console.log('estays.listar')
+		console.log('crudo.listar')
 	}
 	/**
 		Atención a la opción de menú "verCrear"
 	*/
 	verCrear(){
-		console.log('estays.verCrear')
+		this.vistaPrincipal.verCrear()	
+	}
+	/**
+	Atención al botón Aceptar de VistaCrear. Crea el nuevo objeto
+	@param objeto {Clase} Objeto a crear.
+	*/
+	aceptarCrear(objeto){
+		this.modelo.insertar(objeto, this.listar.bind(this))
 	}
 }
 
-var etays = new Etays()
+var crudo = new Crudo()
