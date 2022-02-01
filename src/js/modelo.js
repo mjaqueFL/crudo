@@ -102,7 +102,8 @@ export class Modelo{
 				resultado.push(objeto)
 				cursor.continue()
  			}
- 			accion(resultado)
+			else
+ 				callback(resultado)
 		}
 	}	
 }
